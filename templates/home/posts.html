@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+    <h1 class="text-center p-3">Read these amazing posts by Coding blog</h1>
+     <div class="container mt-5 d-flex" style="flex-wrap: wrap;">
+     {% for i in post %}
+        <div class="card m-2" style="width: 18rem;">
+            <img src="{{i.imgae_url}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{i.title}}</h5>
+                <p class="card-text">{{i.desc|truncatechars:50}}</p>
+                <a href="/p/{{i.slug}}/" class="btn btn-primary">Read more</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% comment %} 
+    <div class="container-fluid">
+        <img src="/media/{{post.0.image}}/" alt="" style="width:100%; height:60vh;">
+    </div> {% endcomment %}
+{% endblock  %}

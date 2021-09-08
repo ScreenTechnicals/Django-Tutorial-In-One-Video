@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}Conatct{% endblock title %}
+{% block body %}
+
+{% if messages %}
+<ul class="messages m-0 p-0">
+    {% for message in messages %}
+        <div {% if message.tags %} class="alert-{{ message.tags }} alert alert-dismissible fade show"{% endif %} role="alert">
+           <h3>{{ message }}</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+<div class="container">
+<h1 class="text-center p-3">Contact Us</h1>
+    <form action="/contact/" method="POST" class="p-3 m-5" style="border:1px solid #000;">
+    {% csrf_token %}
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Username</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Purpose</label>
+           <textarea name="purpose" id="" cols="160" rows="5" style="display:block"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+{% endblock body %}

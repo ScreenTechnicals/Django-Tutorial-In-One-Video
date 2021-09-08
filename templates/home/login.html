@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}login{% endblock title %}
+{% block body %}
+{% if messages %}
+<ul class="messages m-0 p-0">
+    {% for message in messages %}
+        <div {% if message.tags %} class="alert-{{ message.tags }} alert alert-dismissible fade show"{% endif %} role="alert">
+           <h3>{{ message }}</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+</ul>
+{% endif %}
+<div class="container">
+    <h1 class="text-center p-2">Login</h1>
+    <main class="form-signin text-center m-5">
+        <form action="/login/" method="POST" style="width:50%; margin:0 auto; border:1px solid #000; padding:30px;">
+        {% csrf_token %}
+
+            <div class="form-floating my-2">
+                <input type="text" name="username_1" class="form-control" id="floatingInput" placeholder="Create a User Name">
+                <label for="floatingInput">Username</label>
+            </div>
+            <div class="form-floating my-2">
+                <input type="password" name="pass_1" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+            </div>
+            <div class="checkbox mb-3">
+            
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+        </form>
+    </main>
+</div>
+{% endblock body %}

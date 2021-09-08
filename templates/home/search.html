@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+{% if posts|length < 1 %}
+    <h1 class="text-center p-3">No search results for "{{query}}"</h1>
+{% else %}
+    <h1 class="text-center p-3">Search results for "{{query}}"</h1>
+     <div class="container mt-5 d-flex" style="flex-wrap: wrap;">
+     {% for i in posts %}
+        <div class="card m-2" style="width: 18rem;">
+            <img src="{{i.imgae_url}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{i.title}}</h5>
+                <p class="card-text">{{i.desc|truncatechars:50}}</p>
+                <a href="/{{i.slug}}/" class="btn btn-primary">Read more</a>
+            </div>
+        </div>
+        {% endfor %}
+        </div>
+{% endif %}
+
+{% endblock  %}
